@@ -8,7 +8,15 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+// Replace this with your frontend URL
+const frontendURL = 'https://portfolio-frontend-delta-gold.vercel.app';
+
+// Use CORS middleware
+app.use(cors({
+    origin: frontendURL,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true, // if you need to handle cookies
+}));
 app.use(express.json());
 
 // MongoDB Connection
